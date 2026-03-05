@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decor Dari - رف خشبي معلق</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #b58d59; /* لون ذهبي/خشبي أنيق */
+            --secondary-color: #2c3e50; /* لون داكن للنصوص */
+            --bg-color: #fbfbfb; /* لون خلفية مريح */
+            --card-bg: #ffffff;
+            --whatsapp-color: #25d366; /* لون واتساب الرسمي */
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* شريط التنقل العلوي */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-container img {
+            width: 50px; /* حجم الشعار في الأعلى */
+            border-radius: 5px;
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: 1px;
+        }
+
+        /* الحاوية الرئيسية للمنتج */
+        .main-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        /* قسم صورة المنتج الرئيسية ومعرض الصور */
+        .product-gallery {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .main-product-image {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .main-product-image:hover {
+            transform: scale(1.02); /* تكبير خفيف عند مرور الماوس */
+        }
+
+        /* معرض الصور الإضافية */
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .thumbnail-gallery img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .thumbnail-gallery img:hover,
+        .thumbnail-gallery img.active {
+            border-color: var(--primary-color); /* إبراز الصورة النشطة */
+        }
+
+        /* قسم تفاصيل المنتج واستمارة الطلب */
+        .product-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 32px;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .price-tag {
+            font-size: 30px;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .old-price {
+            font-size: 20px;
+            color: #999;
+            text-decoration: line-through;
+            font-weight: 600;
+        }
+
+        .discount-badge {
+            background-color: #ffecec;
+            color: #e74c3c;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-weight: 700;
+        }
+
+        /* استمارة الطلب */
+        .order-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .order-card h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #e1e1e1;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 15px;
+            background-color: #fcfcfc;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(181, 141, 89, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--primary-color), #9a7647);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(181, 141, 89, 0.4);
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(181, 141, 89, 0.6);
+        }
+
+        /* قسم المميزات */
+        .features-section {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .features-section h2 {
+            color: var(--secondary-color);
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .features-section h2::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 15px;
+            border-right: 4px solid var(--primary-color);
+        }
+
+        .feature-item h4 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            font-size: 18px;
+        }
+
+        /* زر واتساب العائم */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            left: 40px; /* جهة اليسار لتجنب حجب المحتوى */
+            background-color: var(--whatsapp-color);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+        }
+
+        /* التجاوب مع الهواتف الذكية */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .features-section {
+                padding: 20px;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                left: 20px;
+                font-size: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo-container">
+            <img src="logo.jpeg" alt="شعار ديكور داري">
+            <span class="logo-text">Decor Dari</span>
+        </a>
+    </header>
+
+    <div class="main-container">
+        <div class="product-gallery">
+            <img src="image cc.png" alt="رف خشبي معلق أنيق" class="main-product-image" id="mainImage">
+            
+            <div class="thumbnail-gallery">
+                <img src="RARA.jpeg" alt="صورة منتج 1" class="active" onclick="changeImage(this)">
+                <img src="image.png" alt="صورة منتج 2" onclick="changeImage(this)">
+                <img src="image cc.png" alt="صورة منتج 3" onclick="changeImage(this)">
+                <img src="imagerr.png" alt="صورة منتج 4" onclick="changeImage(this)">
+                <img src="imageee.png" alt="صورة منتج 5" onclick="changeImage(this)">
+            </div>
+        </div>
+
+        <div class="product-info">
+            <h1 class="product-title">رف خشبي معلق أنيق (ديكور داري )</h1>
+            
+            <div class="price-tag">
+                259 درهم 
+                <span class="old-price">299 درهم</span>
+                <span class="discount-badge">تخفيض حصري</span>
+            </div>
+
+            <div class="order-card">
+                <h3>أدخل معلوماتك للطلب الآن 🚚</h3>
+                
+                <div class="input-group">
+                    <label>اختر اللون المناسب لديكور منزلك:</label>
+                    <select id="productColor">
+                        <option>أبيض ناصع</option>
+                        <option>خشب طبيعي فاتح</option>
+                        <option>خشب جوز داكن</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="fullName"
+                    placeholder="الإسم الكامل" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="tel" id="phoneNumber"
+                    placeholder="رقم الهاتف للتواصل" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="text" id="location"
+                    placeholder="المدينة والعنوان" required>
+                </div>
+                
+                <button class="btn-submit"
+                onclick="sendToWhatsApp()">تأكيد الطلب الآن</button>
+                <p style="text-align: center; font-size: 13px; color: #777; margin-top: 15px;">🔒 الدفع يكون عند الاستلام. التوصيل مجاني!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="features-section">
+        <h2>لماذا تختار هذا المنتج من Decor Dari؟</h2>
+        <p style="text-align: center; margin-bottom: 40px; color: #666;">استمتع بالعملية والأناقة مع هذا الديكور الخشبي، إضافة فعّالة وأنيقة لتنظيم وتجميل المساحات، جاهزة لتحويل منزلك!</p>
+        
+        <div class="features-grid">
+            <div class="feature-item">
+                <h4>🏡 تصميم أنيق وعملي</h4>
+                <p>وحدة تخزين فاخرة وعملية، تضيف لمسة من الرقي والأناقة إلى أي غرفة في منزلك.</p>
+            </div>
+            <div class="feature-item">
+                <h4>📚 مساحة تخزين ذكية</h4>
+                <p>مساحة كافية ومنظمة لعرض الكتب، الصور، الهدايا التذكارية، والنباتات الصغيرة.</p>
+            </div>
+            <div class="feature-item">
+                <h4>🛠️ سهل التركيب جداً</h4>
+                <p>يأتي مع جميع ملحقات التثبيت اللازمة، جاهز للتعليق في دقائق معدودة.</p>
+            </div>
+            <div class="feature-item">
+                <h4>🌳 جودة خشب أصلية</h4>
+                <p>مصنوع من خشب MDF عالي الجودة والمتانة ليدوم طويلاً ويتحمل الأوزان.</p>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://wa.me/212711774208" class="whatsapp-float" target="_blank">
+        <a href="https://wa.me/212711774208" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i> </a>
+
+    <script>
+        function changeImage(element) {
+            var mainImage = document.getElementById('mainImage');
+            mainImage.src = element.src;
+            
+            // إزالة فئة 'active' من جميع الصور المصغرة
+            var thumbnails = document.querySelectorAll('.thumbnail-gallery img');
+            thumbnails.forEach(function(thumb) {
+                thumb.classList.remove('active');
+            });
+            
+            // إضافة فئة 'active' للصورة المصغرة التي تم النقر عليها
+            element.classList.add('active');
+        }
+    </script>
+<script>
+function sendToWhatsApp() {
+    // ضع رقمك هنا (مثال للمغرب يبدأ بـ 212)
+    let myNumber = "212711774208"; 
+
+    // جلب البيانات من الخانات التي أضفنا لها id
+    let color = document.getElementById('productColor').value;
+    let name = document.getElementById('fullName').value;
+    let phone = document.getElementById('phoneNumber').value;
+    let city = document.getElementById('location').value;
+
+    // التحقق من أن الزبون لم يترك الخانات فارغة
+    if(name === "" || phone === "" || city === "") {
+        alert("يرجى ملء جميع الخانات");
+        return;
+    }
+
+    // تجهيز الرسالة
+    let message = "طلب جديد من الموقع 📦%0A" + 
+                  "*اللون:* " + color + "%0A" + 
+                  "*الإسم:* " + name + "%0A" + 
+                  "*الهاتف:* " + phone + "%0A" + 
+                  "*العنوان:* " + city;
+
+    // فتح رابط الواتساب بالرسالة
+    window.open("https://wa.me/" + myNumber + "?text=" + message, '_blank');
+}
+</script>
+</body>
+</html>
